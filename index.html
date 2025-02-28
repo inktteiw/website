@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ΙΝΚΘΕΙ</title>
     <style>
-        /* Βασικά στυλ */
         body {
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
             color: #4A4A4A;
-            padding-bottom: 50px; /* Για να μην καλύπτει το footer το περιεχόμενο */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             transition: background-image 0.5s ease-in-out;
+            padding-bottom: 50px;
         }
 
         header {
@@ -53,9 +52,12 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
-            color: #5E4A3D;
-            text-align: center;
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         footer {
@@ -76,7 +78,7 @@
 
     <nav>
         <a href="#" onclick="showTab('intro')">Πληροφορίες για το ναό</a>
-        <a href="#" onclick="showTab('program')">Πρόγραμμα Λειτουργιών</a>        
+        <a href="#" onclick="showTab('program')">Πρόγραμμα Λειτουργιών</a>
         <a href="#" onclick="showTab('events')">Εκδηλώσεις & Εκδρομές</a>
         <a href="#" onclick="showTab('info')">Επικοινωνία</a>
     </nav>
@@ -86,79 +88,58 @@
             <h2>Καλώς ήρθατε στην ιστοσελίδα του ιερού ναού μας</h2>
             <p>Ο ναός χτίστηκε το ..., διατηρεί παράδοση ...</p>
         </div>
-
         <div id="program" class="tab-content">
             <h2>Πρόγραμμα Λειτουργιών</h2>
             <ul>
-                <li><strong>Κυριακή:</strong> Θεία Λειτουργία - 07:30 π.μ.</li>                
-                <li><strong>Τετάρτη:</strong> Παράκληση - 06:00 μ.μ.</li>             
-                <li><strong>Παρασκευή:</strong> Εσπερινός - 06:00 μ.μ.</li>                
+                <li><strong>Κυριακή:</strong> Θεία Λειτουργία - 07:30 π.μ.</li>
+                <li><strong>Τετάρτη:</strong> Παράκληση - 06:00 μ.μ.</li>
+                <li><strong>Παρασκευή:</strong> Εσπερινός - 06:00 μ.μ.</li>
                 <li><strong>Σάββατο:</strong> Θεία Λειτουργία - 07:30 π.μ.</li>
             </ul>
         </div>
-
-        <div id="info" class="tab-content">
-            <h2>Πληροφορίες</h2>
-            <p>
-                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps" target="_blank">Πολυτεχνείου X, Ελεούσα Ιωαννίνων</a><br>
-                <strong>Τηλέφωνο:</strong> +30 26510 XXXXX<br>
-                <strong>Email:</strong> bpinkttei@gmail.com
-            </p>
-        </div>
-        
         <div id="events" class="tab-content">
             <h2>Εκδηλώσεις & Εκδρομές</h2>
             <ul>
-                <li><strong>Κατηχητικό:</strong> Κάθε Κυριακή - 12:00 μ.μ.</li>              
+                <li><strong>Κατηχητικό:</strong> Κάθε Κυριακή - 12:00 μ.μ.</li>
                 <li><strong>Εκδρομή:</strong> Προσκύνημα στη Μονή Οσίου Λουκά - 10 Οκτωβρίου 2025</li>
             </ul>
+        </div>
+        <div id="info" class="tab-content">
+            <h2>Επικοινωνία</h2>
+            <p><strong>Διεύθυνση:</strong> Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</p>
+            <p><strong>Τηλέφωνο:</strong> +30 26510 XXXXX</p>
+            <p><strong>Email:</strong> info@enoria.gr</p>
         </div>
     </div>
 
     <footer>
-        Copyright &copy; 2025 Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωάννινων
+        Copyright &copy; 2025 Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωαννίνων
     </footer>
 
     <script>
-        function showTab(tabId) {
-            var tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            var selectedTab = document.getElementById(tabId);
-            if (selectedTab) {
-                selectedTab.classList.add('active');
-            }
-
-            setBackgroundImage(tabId);
-        }
-
         function setBackgroundImage(tabId) {
-            let imageUrl = '';
-
-            // Επιλογή εικόνας με βάση την καρτέλα και τη συσκευή
-            if (tabId === 'intro') {
-                imageUrl = window.innerWidth <= 768 ? 'trip.jpg' : window.innerWidth <= 1024 ? 'intro-tablet.jpg' : 'intro-desktop.jpg';
-            } else if (tabId === 'program') {
-                imageUrl = window.innerWidth <= 768 ? 'church.jpg' : window.innerWidth <= 1024 ? 'program-tablet.jpg' : 'program-desktop.jpg';
-            } else if (tabId === 'events') {
-                imageUrl = window.innerWidth <= 768 ? 'trip.jpg' : window.innerWidth <= 1024 ? 'events-tablet.jpg' : 'events-desktop.jpg';
-            } else if (tabId === 'info') {
-                imageUrl = window.innerWidth <= 768 ? 'church.jpg' : window.innerWidth <= 1024 ? 'info-tablet.jpg' : 'info-desktop.jpg';
+            let baseImage = '';
+            switch (tabId) {
+                case 'intro': baseImage = 'intro'; break;
+                case 'program': baseImage = 'program'; break;
+                case 'events': baseImage = 'events'; break;
+                case 'info': baseImage = 'info'; break;
             }
-
+            let screenSize = window.innerWidth <= 768 ? 'mobile' :
+                             window.innerWidth <= 1024 ? 'tablet' : 'desktop';
+            let imageUrl = `images/${baseImage}-${screenSize}.jpg`;
             document.body.style.backgroundImage = `url('${imageUrl}')`;
         }
 
-        window.onload = () => {
-            setBackgroundImage('intro'); // Ορισμός αρχικής εικόνας
-        };
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            setBackgroundImage(tabId);
+        }
 
-        window.onresize = () => {
-            const activeTab = document.querySelector('.tab-content.active');
-            if (activeTab) {
-                setBackgroundImage(activeTab.id);
-            }
-        };
+        document.addEventListener("DOMContentLoaded", function() {
+            setBackgroundImage('intro');
+        });
     </script>
 </body>
 </html>
