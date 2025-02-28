@@ -10,9 +10,8 @@
             margin: 0;
             padding: 0;
             color: #4A4A4A;
-            background: url('background.jpg') no-repeat center center fixed;
+            background: url('images/background.jpg') no-repeat center center fixed;
             background-size: cover;
-            padding-bottom: 50px;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -27,6 +26,7 @@
 
         nav {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             background-color: rgba(94, 74, 61, 0.9);
             padding: 10px;
@@ -62,9 +62,27 @@
         }
 
         footer {
-            position: absolute;
-            bottom: 0;
+            position: relative;
             width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+            .content {
+                width: 90%;
+                padding: 15px;
+            }
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav a {
+                display: block;
+                padding: 10px 0;
+            }
         }
     </style>
 </head>
