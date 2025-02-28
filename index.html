@@ -10,9 +10,7 @@
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
-            background-image: url('church.jpg'); /* Εικόνα εκκλησίας ως φόντο */
-            background-size: cover;
-            background-attachment: fixed;
+            background-color: #f4f4f4;
             color: #4A4A4A;
             padding-bottom: 50px; /* Για να μην καλύπτει το footer το περιεχόμενο */
         }
@@ -75,6 +73,15 @@
         .tab-content.active {
             display: block;
         }
+
+        /* Στυλ για την εικόνα */
+        .tab-content img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -94,6 +101,7 @@
         <div id="intro" class="tab-content active">
             <h2>Καλώς ήρθατε στην ιστοσελίδα του ιερού ναού μας</h2>
             <p>Ο ναός χτίστηκε το ..., διατηρεί παράδοση ...</p>
+            <img src="church.jpg" alt="Εικόνα του ναού">
         </div>
 
         <!-- Πρόγραμμα Λειτουργιών -->
