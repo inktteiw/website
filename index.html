@@ -12,6 +12,10 @@
             padding: 0;
             color: #4A4A4A;
             padding-bottom: 50px; /* Για να μην καλύπτει το footer το περιεχόμενο */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         header {
@@ -46,6 +50,7 @@
             max-width: 800px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.8); /* Ημιδιαφανές λευκό για αναγνωσιμότητα */
         }
 
         h2 {
@@ -67,39 +72,10 @@
         .tab-content {
             display: none;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8); /* Ημιδιαφανές λευκό για αναγνωσιμότητα */
-            border-radius: 10px;
         }
 
         .tab-content.active {
             display: block;
-        }
-
-        /* Εικόνες φόντου για κάθε καρτέλα */
-        body.intro-background   {
-            background-image: url('church.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        body.program-background {
-            background-image: url('program-background.jpg'); /* Εικόνα για την καρτέλα Πρόγραμμα */
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-        body.events-background {
-            background-image: url('events-background.jpg'); /* Εικόνα για την καρτέλα Εκδηλώσεις */
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-        body.info-background {
-            background-image: url('info-background.jpg'); /* Εικόνα για την καρτέλα Επικοινωνία */
-            background-size: cover;
-            background-attachment: fixed;
         }
     </style>
 </head>
@@ -137,7 +113,7 @@
         <div id="info" class="tab-content">
             <h2>Πληροφορίες</h2>
             <p>
-                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AE%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z/data=!4m6!3m5!1s0x135bc1eec7479e0f:0x20d18752b7f3e4e6!8m2!3d39.708293!4d20.7907791!16s%2Fg%2F11hbn33f0s" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
+                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AF%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z/data=!4m6!3m5!1s0x135bc1eec7479e0f:0x20d18752b7f3e4e6!8m2!3d39.708293!4d20.7907791!16s%2Fg%2F11hbn33f0s" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
                 <strong>Τηλέφωνο:</strong> +30 26510 XXXXX<br>
                 <strong>Email:</strong> info@enoria.gr
             </p>
@@ -158,10 +134,26 @@
     </footer>
 
     <script>
-        function showTab(tabId, backgroundClass) {
-            // Αλλαγή φόντου του body
-            document.body.className = backgroundClass;
+        // Συνάρτηση για αλλαγή φόντου ανάλογα με το μέγεθος της οθόνης
+        function adjustBackground(backgroundClass) {
+            const body = document.body;
+            const width = window.innerWidth;
 
+            let backgroundImage;
+
+            if (width <= 767) {
+                backgroundImage = `url('${backgroundClass}-mobile.jpg')`;
+            } else if (width >= 768 && width <= 1023) {
+                backgroundImage = `url('${backgroundClass}-tablet.jpg')`;
+            } else {
+                backgroundImage = `url('${backgroundClass}-desktop.jpg')`;
+            }
+
+            body.style.backgroundImage = backgroundImage;
+        }
+
+        // Συνάρτηση για εμφάνιση καρτέλας και αλλαγή φόντου
+        function showTab(tabId, backgroundClass) {
             // Εμφάνιση της επιλεγμένης καρτέλας
             var tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(function(tab) {
@@ -172,7 +164,27 @@
             if (selectedTab) {
                 selectedTab.classList.add('active');
             }
+
+            // Αλλαγή φόντου
+            adjustBackground(backgroundClass);
         }
+
+        // Καλείται όταν αλλάζει το μέγεθος του παραθύρου
+        window.addEventListener('resize', () => {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                const backgroundClass = activeTab.id === 'intro' ? 'intro-background' :
+                                      activeTab.id === 'program' ? 'program-background' :
+                                      activeTab.id === 'events' ? 'events-background' :
+                                      'info-background';
+                adjustBackground(backgroundClass);
+            }
+        });
+
+        // Καλείται όταν φορτώνεται η σελίδα
+        window.addEventListener('load', () => {
+            adjustBackground('intro-background'); // Προεπιλεγμένο φόντο για την καρτέλα Εισαγωγή
+        });
     </script>
 </body>
 </html>
