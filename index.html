@@ -41,7 +41,6 @@
         }
 
         .content {
-            background-color: rgba(255, 255, 255, 0.9); /* Λευκό με διαφάνεια */
             padding: 20px;
             margin: 20px auto;
             max-width: 800px;
@@ -68,9 +67,8 @@
         .tab-content {
             display: none;
             padding: 20px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color: rgba(255, 255, 255, 0.8); /* Ημιδιαφανές λευκό για αναγνωσιμότητα */
+            border-radius: 10px;
         }
 
         .tab-content.active {
@@ -78,33 +76,41 @@
         }
 
         /* Εικόνες φόντου για κάθε καρτέλα */
-        #intro {
+        body.intro-background {
             background-image: url('church.jpg'); /* Εικόνα για την καρτέλα Εισαγωγή */
+            background-size: cover;
+            background-attachment: fixed;
         }
 
-        #program {
+        body.program-background {
             background-image: url('program-background.jpg'); /* Εικόνα για την καρτέλα Πρόγραμμα */
+            background-size: cover;
+            background-attachment: fixed;
         }
 
-        #events {
+        body.events-background {
             background-image: url('events-background.jpg'); /* Εικόνα για την καρτέλα Εκδηλώσεις */
+            background-size: cover;
+            background-attachment: fixed;
         }
 
-        #info {
+        body.info-background {
             background-image: url('info-background.jpg'); /* Εικόνα για την καρτέλα Επικοινωνία */
+            background-size: cover;
+            background-attachment: fixed;
         }
     </style>
 </head>
-<body>
+<body class="intro-background"> <!-- Προεπιλεγμένο φόντο για την καρτέλα Εισαγωγή -->
     <header>
         <h1>Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωάννινων</h1>
     </header>
 
     <nav>
-        <a href="#" onclick="showTab('intro')">Πληροφορίες για το ναό</a>
-        <a href="#" onclick="showTab('program')">Πρόγραμμα Λειτουργιών</a>        
-        <a href="#" onclick="showTab('events')">Εκδηλώσεις & Εκδρομές</a>
-        <a href="#" onclick="showTab('info')">Επικοινωνία</a>
+        <a href="#" onclick="showTab('intro', 'intro-background')">Πληροφορίες για το ναό</a>
+        <a href="#" onclick="showTab('program', 'program-background')">Πρόγραμμα Λειτουργιών</a>        
+        <a href="#" onclick="showTab('events', 'events-background')">Εκδηλώσεις & Εκδρομές</a>
+        <a href="#" onclick="showTab('info', 'info-background')">Επικοινωνία</a>
     </nav>
 
     <div class="content">
@@ -150,7 +156,11 @@
     </footer>
 
     <script>
-        function showTab(tabId) {
+        function showTab(tabId, backgroundClass) {
+            // Αλλαγή φόντου του body
+            document.body.className = backgroundClass;
+
+            // Εμφάνιση της επιλεγμένης καρτέλας
             var tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(function(tab) {
                 tab.classList.remove('active');
