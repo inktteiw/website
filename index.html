@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ΙΝΚΘΕΙ</title>
     <style>
-        /* Βασικά στυλ */
         body {
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
             color: #4A4A4A;
             padding-bottom: 50px; /* Για να μην καλύπτει το footer το περιεχόμενο */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.5s ease-in-out; /* Ομαλή μετάβαση */
         }
 
         header {
-            background-color: rgba(74, 54, 41, 0.9); /* Βυζαντινό καφέ */
+            background-color: rgba(74, 54, 41, 0.9);
             color: white;
             padding: 20px;
             text-align: center;
@@ -25,7 +28,7 @@
         nav {
             display: flex;
             justify-content: center;
-            background-color: rgba(94, 74, 61, 0.9); /* Βυζαντινό καφέ (πιο ανοιχτό) */
+            background-color: rgba(94, 74, 61, 0.9);
             padding: 10px;
         }
 
@@ -41,7 +44,7 @@
         }
 
         .content {
-            background-color: rgba(255, 255, 255, 0.9); /* Λευκό με διαφάνεια */
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             margin: 20px auto;
             max-width: 800px;
@@ -50,12 +53,12 @@
         }
 
         h2 {
-            color: #5E4A3D; /* Βυζαντινό καφέ */
+            color: #5E4A3D;
             text-align: center;
         }
 
         footer {
-            background-color: rgba(74, 54, 41, 0.9); /* Βυζαντινό καφέ */
+            background-color: rgba(74, 54, 41, 0.9);
             color: white;
             text-align: center;
             padding: 10px;
@@ -64,57 +67,35 @@
             width: 100%;
         }
 
-        /* Ειδικά στυλ για καρτέλες */
         .tab-content {
             display: none;
             padding: 20px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
         }
 
         .tab-content.active {
             display: block;
         }
-
-        /* Εικόνες φόντου για κάθε καρτέλα */
-        #intro {
-            background-image: url('church.jpg'); /* Εικόνα για την καρτέλα Εισαγωγή */
-        }
-
-        #program {
-            background-image: url('program-background.jpg'); /* Εικόνα για την καρτέλα Πρόγραμμα */
-        }
-
-        #events {
-            background-image: url('events-background.jpg'); /* Εικόνα για την καρτέλα Εκδηλώσεις */
-        }
-
-        #info {
-            background-image: url('info-background.jpg'); /* Εικόνα για την καρτέλα Επικοινωνία */
-        }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωάννινων</h1>
     </header>
 
     <nav>
-        <a href="#" onclick="showTab('intro')">Πληροφορίες για το ναό</a>
-        <a href="#" onclick="showTab('program')">Πρόγραμμα Λειτουργιών</a>        
-        <a href="#" onclick="showTab('events')">Εκδηλώσεις & Εκδρομές</a>
-        <a href="#" onclick="showTab('info')">Επικοινωνία</a>
+        <a href="#" onclick="showTab('intro', 'church.jpg')">Πληροφορίες για το ναό</a>
+        <a href="#" onclick="showTab('program', 'program-background.jpg')">Πρόγραμμα Λειτουργιών</a>        
+        <a href="#" onclick="showTab('events', 'events-background.jpg')">Εκδηλώσεις & Εκδρομές</a>
+        <a href="#" onclick="showTab('info', 'info-background.jpg')">Επικοινωνία</a>
     </nav>
 
     <div class="content">
-        <!-- Εισαγωγή -->
         <div id="intro" class="tab-content active">
             <h2>Καλώς ήρθατε στην ιστοσελίδα του ιερού ναού μας</h2>
             <p>Ο ναός χτίστηκε το ..., διατηρεί παράδοση ...</p>
         </div>
 
-        <!-- Πρόγραμμα Λειτουργιών -->
         <div id="program" class="tab-content">
             <h2>Πρόγραμμα Λειτουργιών</h2>
             <ul>
@@ -125,17 +106,15 @@
             </ul>
         </div>
 
-        <!-- Πληροφορίες -->
         <div id="info" class="tab-content">
             <h2>Πληροφορίες</h2>
             <p>
-                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AE%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z/data=!4m6!3m5!1s0x135bc1eec7479e0f:0x20d18752b7f3e4e6!8m2!3d39.708293!4d20.7907791!16s%2Fg%2F11hbn33f0s" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
+                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AE%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
                 <strong>Τηλέφωνο:</strong> +30 26510 XXXXX<br>
                 <strong>Email:</strong> info@enoria.gr
             </p>
         </div>
-        
-        <!-- Εκδηλώσεις & Εκδρομές -->
+
         <div id="events" class="tab-content">
             <h2>Εκδηλώσεις & Εκδρομές</h2>
             <ul>
@@ -150,7 +129,7 @@
     </footer>
 
     <script>
-        function showTab(tabId) {
+        function showTab(tabId, backgroundImage) {
             var tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(function(tab) {
                 tab.classList.remove('active');
@@ -160,7 +139,14 @@
             if (selectedTab) {
                 selectedTab.classList.add('active');
             }
+
+            // Αλλάζει το background image του body
+            document.body.style.backgroundImage = "url('" + backgroundImage + "')";
         }
+
+        // Ορισμός αρχικού background
+        document.body.style.backgroundImage = "url('church.jpg')";
     </script>
+
 </body>
 </html>
