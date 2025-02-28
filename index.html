@@ -127,7 +127,7 @@
             }
             let screenSize = window.innerWidth <= 768 ? 'mobile' :
                              window.innerWidth <= 1024 ? 'tablet' : 'desktop';
-            let imageUrl = `${baseImage}-${screenSize}.jpg`;
+            let imageUrl = `images/${baseImage}-${screenSize}.jpg`;
             document.body.style.backgroundImage = `url('${imageUrl}')`;
         }
 
