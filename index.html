@@ -10,7 +10,6 @@
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4; /* Απλό φόντο χωρίς εικόνα */
             color: #4A4A4A;
             padding-bottom: 50px; /* Για να μην καλύπτει το footer το περιεχόμενο */
         }
@@ -68,19 +67,31 @@
         /* Ειδικά στυλ για καρτέλες */
         .tab-content {
             display: none;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* Στυλ για την εικόνα */
-        .tab-content img {
-            display: block;
-            margin: 20px auto;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
+        /* Εικόνες φόντου για κάθε καρτέλα */
+        #intro {
+            background-image: url('church.jpg'); /* Εικόνα για την καρτέλα Εισαγωγή */
+        }
+
+        #program {
+            background-image: url('program-background.jpg'); /* Εικόνα για την καρτέλα Πρόγραμμα */
+        }
+
+        #events {
+            background-image: url('events-background.jpg'); /* Εικόνα για την καρτέλα Εκδηλώσεις */
+        }
+
+        #info {
+            background-image: url('info-background.jpg'); /* Εικόνα για την καρτέλα Επικοινωνία */
         }
     </style>
 </head>
@@ -101,7 +112,6 @@
         <div id="intro" class="tab-content active">
             <h2>Καλώς ήρθατε στην ιστοσελίδα του ιερού ναού μας</h2>
             <p>Ο ναός χτίστηκε το ..., διατηρεί παράδοση ...</p>
-            <img src="church.jpg" alt="Εικόνα του ναού">
         </div>
 
         <!-- Πρόγραμμα Λειτουργιών -->
@@ -119,7 +129,7 @@
         <div id="info" class="tab-content">
             <h2>Πληροφορίες</h2>
             <p>
-                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AF%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z/data=!4m6!3m5!1s0x135bc1eec7479e0f:0x20d18752b7f3e4e6!8m2!3d39.708293!4d20.7907791!16s%2Fg%2F11hbn33f0s" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
+                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AE%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z/data=!4m6!3m5!1s0x135bc1eec7479e0f:0x20d18752b7f3e4e6!8m2!3d39.708293!4d20.7907791!16s%2Fg%2F11hbn33f0s" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
                 <strong>Τηλέφωνο:</strong> +30 26510 XXXXX<br>
                 <strong>Email:</strong> info@enoria.gr
             </p>
