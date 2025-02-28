@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΙΝΚΘΕΙ</title>
+    <style>
+        /* Βασικά στυλ */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('church.jpg'); /* Εικόνα εκκλησίας ως φόντο */
+            background-size: cover;
+            background-attachment: fixed;
+            color: #4A4A4A;
+            padding-bottom: 50px; /* Για να μην καλύπτει το footer το περιεχόμενο */
+        }
+
+        header {
+            background-color: rgba(74, 54, 41, 0.9); /* Βυζαντινό καφέ */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(94, 74, 61, 0.9); /* Βυζαντινό καφέ (πιο ανοιχτό) */
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.9); /* Λευκό με διαφάνεια */
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #5E4A3D; /* Βυζαντινό καφέ */
+            text-align: center;
+        }
+
+        footer {
+            background-color: rgba(74, 54, 41, 0.9); /* Βυζαντινό καφέ */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Ειδικά στυλ για καρτέλες */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωάννινων</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showTab('intro')">Πληροφορίες για το ναό</a>
+        <a href="#" onclick="showTab('program')">Πρόγραμμα Λειτουργιών</a>        
+        <a href="#" onclick="showTab('events')">Εκδηλώσεις & Εκδρομές</a>
+        <a href="#" onclick="showTab('info')">Επικοινωνία</a>
+    </nav>
+
+    <div class="content">
+        <!-- Εισαγωγή -->
+        <div id="intro" class="tab-content active">
+            <h2>Καλώς ήρθατε στην ιστοσελίδα του ιερού ναού μας</h2>
+            <p>Ο ναός χτίστηκε το ..., διατηρεί παράδοση ...</p>
+        </div>
+
+        <!-- Πρόγραμμα Λειτουργιών -->
+        <div id="program" class="tab-content">
+            <h2>Πρόγραμμα Λειτουργιών</h2>
+            <ul>
+                <li><strong>Κυριακή:</strong> Θεία Λειτουργία στον Ιερό ναό Κοιμήσεως της Θεοτόκου - 07:30 π.μ. </li>                
+                <li><strong>Τετάρτη:</strong> Παράκληση στην Παναγία  στον Ιερό ναό Παναγίας Ελεούσας - 06:00 μ.μ. </li>             
+                <li><strong>Παρασκευή:</strong> Εσπερινός στον Ιερό ναό Παναγίας Ελεούσας - 06:00 μ.μ. </li>                
+                <li><strong>Σάββατο:</strong> Θεία Λειτουργία στον Ιερό ναό Αγίου Γεωργίου - 07:30 π.μ. </li>
+            </ul>
+        </div>
+
+        <!-- Πληροφορίες -->
+        <div id="info" class="tab-content">
+            <h2>Πληροφορίες</h2>
+            <p>
+                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AE%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z/data=!4m6!3m5!1s0x135bc1eec7479e0f:0x20d18752b7f3e4e6!8m2!3d39.708293!4d20.7907791!16s%2Fg%2F11hbn33f0s" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
+                <strong>Τηλέφωνο:</strong> +30 26510 XXXXX<br>
+                <strong>Email:</strong> info@enoria.gr
+            </p>
+        </div>
+        
+        <!-- Εκδηλώσεις & Εκδρομές -->
+        <div id="events" class="tab-content">
+            <h2>Εκδηλώσεις & Εκδρομές</h2>
+            <ul>
+                <li><strong>Κατηχητικό:</strong> Κάθε Κυριακή - 12:00 μ.μ. </li>              
+                <li><strong>Εκδρομή:</strong> Προσκύνημα στη Μονή Οσίου Λουκά - 10 Οκτωβρίου 2025 </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        Copyright &copy; 2025 Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωάννινων
+    </footer>
+
+    <script>
+        function showTab(tabId) {
+            var tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+
+            var selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
