@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ΙΝΚΘΕΙ</title>
     <style>
+        /* Βασικά στυλ */
         body {
             font-family: 'Georgia', serif;
             margin: 0;
@@ -14,7 +15,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            transition: background-image 0.5s ease-in-out; /* Ομαλή μετάβαση */
+            transition: background-image 0.5s ease-in-out;
         }
 
         header {
@@ -66,28 +67,18 @@
             bottom: 0;
             width: 100%;
         }
-
-        .tab-content {
-            display: none;
-            padding: 20px;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωάννινων</h1>
     </header>
 
     <nav>
-        <a href="#" onclick="showTab('intro', 'church.jpg')">Πληροφορίες για το ναό</a>
-        <a href="#" onclick="showTab('program', 'church.jpg')">Πρόγραμμα Λειτουργιών</a>        
-        <a href="#" onclick="showTab('events', 'trips.jpg')">Εκδηλώσεις & Εκδρομές</a>
-        <a href="#" onclick="showTab('info', 'trips.jpg')">Επικοινωνία</a>
+        <a href="#" onclick="showTab('intro')">Πληροφορίες για το ναό</a>
+        <a href="#" onclick="showTab('program')">Πρόγραμμα Λειτουργιών</a>        
+        <a href="#" onclick="showTab('events')">Εκδηλώσεις & Εκδρομές</a>
+        <a href="#" onclick="showTab('info')">Επικοινωνία</a>
     </nav>
 
     <div class="content">
@@ -99,27 +90,27 @@
         <div id="program" class="tab-content">
             <h2>Πρόγραμμα Λειτουργιών</h2>
             <ul>
-                <li><strong>Κυριακή:</strong> Θεία Λειτουργία στον Ιερό ναό Κοιμήσεως της Θεοτόκου - 07:30 π.μ. </li>                
-                <li><strong>Τετάρτη:</strong> Παράκληση στην Παναγία  στον Ιερό ναό Παναγίας Ελεούσας - 06:00 μ.μ. </li>             
-                <li><strong>Παρασκευή:</strong> Εσπερινός στον Ιερό ναό Παναγίας Ελεούσας - 06:00 μ.μ. </li>                
-                <li><strong>Σάββατο:</strong> Θεία Λειτουργία στον Ιερό ναό Αγίου Γεωργίου - 07:30 π.μ. </li>
+                <li><strong>Κυριακή:</strong> Θεία Λειτουργία - 07:30 π.μ.</li>                
+                <li><strong>Τετάρτη:</strong> Παράκληση - 06:00 μ.μ.</li>             
+                <li><strong>Παρασκευή:</strong> Εσπερινός - 06:00 μ.μ.</li>                
+                <li><strong>Σάββατο:</strong> Θεία Λειτουργία - 07:30 π.μ.</li>
             </ul>
         </div>
 
         <div id="info" class="tab-content">
             <h2>Πληροφορίες</h2>
             <p>
-                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps/place/%CE%99%CE%B5%CF%81%CF%8C%CF%82+%CE%9D%CE%B1%CF%8C%CF%82+%CE%9A%CE%BF%CE%B9%CE%BC%CE%AE%CF%83%CE%B5%CF%89%CF%82+%CE%98%CE%B5%CE%BF%CF%84%CF%8C%CE%BA%CE%BF%CF%85/@39.7049147,20.7984386,14z" target="_blank">Πολυτεχνείου X, 45500 Ελεούσα Ιωαννίνων</a><br>
+                <strong>Διεύθυνση:</strong> <a href="https://www.google.com/maps" target="_blank">Πολυτεχνείου X, Ελεούσα Ιωαννίνων</a><br>
                 <strong>Τηλέφωνο:</strong> +30 26510 XXXXX<br>
-                <strong>Email:</strong> info@enoria.gr
+                <strong>Email:</strong> bpinkttei@gmail.com
             </p>
         </div>
-
+        
         <div id="events" class="tab-content">
             <h2>Εκδηλώσεις & Εκδρομές</h2>
             <ul>
-                <li><strong>Κατηχητικό:</strong> Κάθε Κυριακή - 12:00 μ.μ. </li>              
-                <li><strong>Εκδρομή:</strong> Προσκύνημα στη Μονή Οσίου Λουκά - 10 Οκτωβρίου 2025 </li>
+                <li><strong>Κατηχητικό:</strong> Κάθε Κυριακή - 12:00 μ.μ.</li>              
+                <li><strong>Εκδρομή:</strong> Προσκύνημα στη Μονή Οσίου Λουκά - 10 Οκτωβρίου 2025</li>
             </ul>
         </div>
     </div>
@@ -129,24 +120,45 @@
     </footer>
 
     <script>
-        function showTab(tabId, backgroundImage) {
+        function showTab(tabId) {
             var tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(function(tab) {
-                tab.classList.remove('active');
-            });
+            tabs.forEach(tab => tab.classList.remove('active'));
 
             var selectedTab = document.getElementById(tabId);
             if (selectedTab) {
                 selectedTab.classList.add('active');
             }
 
-            // Αλλάζει το background image του body
-            document.body.style.backgroundImage = "url('" + backgroundImage + "')";
+            setBackgroundImage(tabId);
         }
 
-        // Ορισμός αρχικού background
-        document.body.style.backgroundImage = "url('church.jpg')";
-    </script>
+        function setBackgroundImage(tabId) {
+            let imageUrl = '';
 
+            // Επιλογή εικόνας με βάση την καρτέλα και τη συσκευή
+            if (tabId === 'intro') {
+                imageUrl = window.innerWidth <= 768 ? 'trip.jpg' : window.innerWidth <= 1024 ? 'intro-tablet.jpg' : 'intro-desktop.jpg';
+            } else if (tabId === 'program') {
+                imageUrl = window.innerWidth <= 768 ? 'church.jpg' : window.innerWidth <= 1024 ? 'program-tablet.jpg' : 'program-desktop.jpg';
+            } else if (tabId === 'events') {
+                imageUrl = window.innerWidth <= 768 ? 'trip.jpg' : window.innerWidth <= 1024 ? 'events-tablet.jpg' : 'events-desktop.jpg';
+            } else if (tabId === 'info') {
+                imageUrl = window.innerWidth <= 768 ? 'church.jpg' : window.innerWidth <= 1024 ? 'info-tablet.jpg' : 'info-desktop.jpg';
+            }
+
+            document.body.style.backgroundImage = `url('${imageUrl}')`;
+        }
+
+        window.onload = () => {
+            setBackgroundImage('intro'); // Ορισμός αρχικής εικόνας
+        };
+
+        window.onresize = () => {
+            const activeTab = document.querySelector('.tab-content.active');
+            if (activeTab) {
+                setBackgroundImage(activeTab.id);
+            }
+        };
+    </script>
 </body>
 </html>
