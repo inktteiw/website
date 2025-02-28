@@ -10,8 +10,11 @@
             margin: 0;
             padding: 0;
             color: #4A4A4A;
-            background: url('background.jpg') no-repeat center center/cover;
+            background: url('images/background.jpg') no-repeat center center/cover;
             padding-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header, footer {
@@ -46,6 +49,7 @@
             max-width: 800px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
         }
 
         .tab-content {
@@ -54,6 +58,12 @@
 
         .tab-content.active {
             display: block;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
