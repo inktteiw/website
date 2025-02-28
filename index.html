@@ -10,12 +10,9 @@
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4; /* Απλό φόντο χωρίς εικόνα */
             color: #4A4A4A;
             padding-bottom: 50px; /* Για να μην καλύπτει το footer το περιεχόμενο */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
         }
 
         header {
@@ -45,12 +42,12 @@
         }
 
         .content {
+            background-color: rgba(255, 255, 255, 0.9); /* Λευκό με διαφάνεια */
             padding: 20px;
             margin: 20px auto;
             max-width: 800px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: rgba(255, 255, 255, 0.8); /* Ημιδιαφανές λευκό για αναγνωσιμότητα */
         }
 
         h2 {
@@ -71,24 +68,32 @@
         /* Ειδικά στυλ για καρτέλες */
         .tab-content {
             display: none;
-            padding: 20px;
         }
 
         .tab-content.active {
             display: block;
         }
+
+        /* Στυλ για την εικόνα */
+        .tab-content img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
     </style>
 </head>
-<body class="intro-background"> <!-- Προεπιλεγμένο φόντο για την καρτέλα Εισαγωγή -->
+<body>
     <header>
         <h1>Ιερός Ναός Κοιμήσεως της Θεοτόκου - Ελεούσα Ιωάννινων</h1>
     </header>
 
     <nav>
-        <a href="#" onclick="showTab('intro', 'intro-background')">Πληροφορίες για το ναό</a>
-        <a href="#" onclick="showTab('program', 'program-background')">Πρόγραμμα Λειτουργιών</a>        
-        <a href="#" onclick="showTab('events', 'events-background')">Εκδηλώσεις & Εκδρομές</a>
-        <a href="#" onclick="showTab('info', 'info-background')">Επικοινωνία</a>
+        <a href="#" onclick="showTab('intro')">Πληροφορίες για το ναό</a>
+        <a href="#" onclick="showTab('program')">Πρόγραμμα Λειτουργιών</a>        
+        <a href="#" onclick="showTab('events')">Εκδηλώσεις & Εκδρομές</a>
+        <a href="#" onclick="showTab('info')">Επικοινωνία</a>
     </nav>
 
     <div class="content">
@@ -96,6 +101,7 @@
         <div id="intro" class="tab-content active">
             <h2>Καλώς ήρθατε στην ιστοσελίδα του ιερού ναού μας</h2>
             <p>Ο ναός χτίστηκε το ..., διατηρεί παράδοση ...</p>
+            <img src="church.jpg" alt="Εικόνα του ναού">
         </div>
 
         <!-- Πρόγραμμα Λειτουργιών -->
@@ -134,27 +140,7 @@
     </footer>
 
     <script>
-        // Συνάρτηση για αλλαγή φόντου ανάλογα με το μέγεθος της οθόνης
-        function adjustBackground(backgroundClass) {
-            const body = document.body;
-            const width = window.innerWidth;
-
-            let backgroundImage;
-
-            if (width <= 767) {
-                backgroundImage = `url('${backgroundClass}-mobile.jpg')`;
-            } else if (width >= 768 && width <= 1023) {
-                backgroundImage = `url('${backgroundClass}-tablet.jpg')`;
-            } else {
-                backgroundImage = `url('${backgroundClass}-desktop.jpg')`;
-            }
-
-            body.style.backgroundImage = backgroundImage;
-        }
-
-        // Συνάρτηση για εμφάνιση καρτέλας και αλλαγή φόντου
-        function showTab(tabId, backgroundClass) {
-            // Εμφάνιση της επιλεγμένης καρτέλας
+        function showTab(tabId) {
             var tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(function(tab) {
                 tab.classList.remove('active');
@@ -164,27 +150,7 @@
             if (selectedTab) {
                 selectedTab.classList.add('active');
             }
-
-            // Αλλαγή φόντου
-            adjustBackground(backgroundClass);
         }
-
-        // Καλείται όταν αλλάζει το μέγεθος του παραθύρου
-        window.addEventListener('resize', () => {
-            const activeTab = document.querySelector('.tab-content.active');
-            if (activeTab) {
-                const backgroundClass = activeTab.id === 'intro' ? 'intro-background' :
-                                      activeTab.id === 'program' ? 'program-background' :
-                                      activeTab.id === 'events' ? 'events-background' :
-                                      'info-background';
-                adjustBackground(backgroundClass);
-            }
-        });
-
-        // Καλείται όταν φορτώνεται η σελίδα
-        window.addEventListener('load', () => {
-            adjustBackground('intro-background'); // Προεπιλεγμένο φόντο για την καρτέλα Εισαγωγή
-        });
     </script>
 </body>
 </html>
